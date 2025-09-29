@@ -14,6 +14,9 @@ class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
+    def delete(self, request):
+        Book.objects.delete()
+
     @action(detail=True, methods=['post'])
     def loan(self, request, pk=None):
         book = self.get_object()
